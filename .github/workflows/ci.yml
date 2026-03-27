@@ -49,6 +49,8 @@ jobs:
       - name: nginx -t
         run: |
           docker run --rm \
+            --add-host backend:127.0.0.1 \
+            --add-host frontend:127.0.0.1 \
             -v "$PWD/nginx/proxy.conf:/etc/nginx/conf.d/default.conf:ro" \
             nginx:1.27-alpine nginx -t
 
