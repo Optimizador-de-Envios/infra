@@ -1,0 +1,14 @@
+# Variables de entorno reales (nunca commitear)
+.env
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
