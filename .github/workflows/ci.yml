@@ -97,14 +97,16 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ vars.GHCR_READ_USERNAME || github.repository_owner }}
-          password: ${{ secrets.GHCR_READ_TOKEN || secrets.GITHUB_TOKEN }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify images are pullable
         run: |
-          docker pull "${{ vars.USER_SERVICE_IMAGE || 'ghcr.io/optimizador-de-envios/user-service:sha-90a4163' }}"
-          docker pull "${{ vars.SHIPMENT_SERVICE_IMAGE || 'ghcr.io/optimizador-de-envios/shipment-service:sha-e1ba8e1' }}"
-          docker pull "${{ vars.FRONTEND_IMAGE || 'ghcr.io/optimizador-de-envios/frontend:sha-d7763cd' }}"
+          set -euo pipefail
+          source .env
+          docker pull "$USER_SERVICE_IMAGE"
+          docker pull "$SHIPMENT_SERVICE_IMAGE"
+          docker pull "$FRONTEND_IMAGE"
 
       - name: docker compose up
         run: docker compose up -d --wait --timeout 90
