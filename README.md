@@ -138,9 +138,14 @@ SHIPMENT_SERVICE_IMAGE
 También puede usar estos secrets si están configurados:
 
 ```text
+GHCR_READ_TOKEN
 JWT_SECRET
 ORS_API_KEY
 ```
+
+`GHCR_READ_TOKEN` es recomendado si las imágenes de GHCR son privadas o si el `GITHUB_TOKEN` del repo `infra` no tiene permisos de lectura sobre los packages del org. Crealo desde una cuenta/bot con `read:packages` y acceso a los paquetes `frontend`, `user-service` y `shipment-service`. Si el token pertenece a una cuenta distinta del owner del repo, definí también la GitHub Actions Variable `GHCR_READ_USERNAME` con ese usuario.
+
+El workflow hace un `docker pull` explícito de cada imagen antes de `docker compose up`; si GHCR responde `denied`, el job falla ahí y muestra cuál imagen no es legible por el token.
 
 ---
 
