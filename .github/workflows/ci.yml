@@ -77,7 +77,7 @@ jobs:
       - name: Crear .env con imágenes reales
         run: |
           cat <<'EOF' > .env
-          FRONTEND_IMAGE=${{ vars.FRONTEND_IMAGE || 'ghcr.io/optimizador-de-envios/frontend:sha-d7763cd' }}
+          FRONTEND_IMAGE=${{ vars.FRONTEND_IMAGE || 'ghcr.io/optimizador-de-envios/frontend:sha-115567d' }}
           USER_SERVICE_IMAGE=${{ vars.USER_SERVICE_IMAGE || 'ghcr.io/optimizador-de-envios/user-service:sha-90a4163' }}
           SHIPMENT_SERVICE_IMAGE=${{ vars.SHIPMENT_SERVICE_IMAGE || 'ghcr.io/optimizador-de-envios/shipment-service:sha-e1ba8e1' }}
           JWT_SECRET=${{ secrets.JWT_SECRET || 'ci-shared-jwt-secret-change-me-please-use-32-chars' }}
