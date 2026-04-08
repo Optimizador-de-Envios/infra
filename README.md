@@ -42,6 +42,7 @@ Editá `.env` y completá los valores reales:
 | `USER_DB_NAME`, `USER_DB_USERNAME`, `USER_DB_PASSWORD` | Base dedicada para `user-service`. |
 | `SHIPMENT_DB_NAME`, `SHIPMENT_DB_USERNAME`, `SHIPMENT_DB_PASSWORD` | Base dedicada para `shipment-service`. |
 | `JPA_DDL_AUTO`, `JPA_SHOW_SQL` | Configuración JPA usada por los microservicios. |
+| `CORS_ALLOWED_ORIGINS` | Orígenes permitidos por `user-service`; debe incluir `http://localhost:3000` para la app vía proxy. |
 | `ORS_API_KEY` | API key de [OpenRouteService](https://openrouteservice.org/dev/#/signup). |
 
 ### 3. Levantar el stack
