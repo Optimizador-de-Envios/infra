@@ -118,6 +118,8 @@ La imagen del frontend debe compilarse con rutas relativas para que el proxy dec
 
 Si esas variables no existen, el fallback del código puede apuntar a `http://localhost:8081` y `http://localhost:8080` dentro del bundle. Si existen con valor vacío, las llamadas quedan como `/api/users/...` y `/api/v1/pedido/...`, y pasan por `http://localhost:3000`.
 
+El autocompletado de ciudades usa OpenRouteService desde el navegador. Para Docker, la imagen del frontend genera `/env-config.js` al arrancar y `docker-compose.yml` le pasa `VITE_OPENROUTESERVICE_API_KEY` desde `ORS_API_KEY`; por eso alcanza con completar `ORS_API_KEY` en `.env` y reiniciar el stack con una imagen frontend que incluya ese soporte.
+
 ---
 
 ## CI
